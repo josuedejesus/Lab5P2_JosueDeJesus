@@ -15,19 +15,17 @@ public class Usuario extends Persona{
     private Date fecha;
     private int telefono;
     private String correo;
-    private String nombre;
     private String genero;
 
     public Usuario() {
         super();
     }
 
-    public Usuario(Date fecha, int telefono, String correo, String nombre, String genero, String usuario, String contrasena) {
-        super(usuario, contrasena);
+    public Usuario(Date fecha, int telefono, String correo, String genero, String nombre, String usuario, String contrasena) {
+        super(nombre, usuario, contrasena);
         this.fecha = fecha;
         this.telefono = telefono;
         this.correo = correo;
-        this.nombre = nombre;
         this.genero = genero;
     }
 
@@ -55,14 +53,6 @@ public class Usuario extends Persona{
         this.correo = correo;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getGenero() {
         return genero;
     }
@@ -73,8 +63,8 @@ public class Usuario extends Persona{
 
     @Override
     public String toString() {
-        return "Usuario{" + "fecha=" + fecha + ", telefono=" + telefono + ", correo=" + correo + ", nombre=" + nombre + ", genero=" + genero + '}';
+        return "Usuario{" + "fecha=" + fecha + ", telefono=" + telefono + ", correo=" + correo + ", genero=" + genero + '}';
     }
-    
+
     
 }

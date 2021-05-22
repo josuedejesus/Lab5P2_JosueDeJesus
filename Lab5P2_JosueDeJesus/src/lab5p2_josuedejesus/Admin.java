@@ -11,29 +11,30 @@ package lab5p2_josuedejesus;
  */
 public class Admin extends Persona{
 
-    private String nombre;
+    private int codigo;
     
     public Admin() {
         super();
     }
 
-    public Admin(String nombre, String usuario, String contrasena) {
-        super(usuario, contrasena);
-        this.nombre = nombre;
+    public Admin(int codigo, String nombre, String usuario, String contrasena) {
+        super(nombre, usuario, contrasena);
+        this.codigo = codigo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     @Override
     public String toString() {
-        return "Admin{" + "nombre=" + nombre + '}';
+        return "Admin{" + "codigo=" + codigo + '}';
     }
+
     
     
 }

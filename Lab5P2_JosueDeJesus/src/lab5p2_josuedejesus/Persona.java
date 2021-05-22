@@ -12,16 +12,27 @@ import java.util.Date;
  * @author josue
  */
 public class Persona {
+    private String nombre;
     private String usuario;
     private String contrasena;
 
     public Persona() {
     }
 
-    public Persona(String usuario, String contrasena) {
+    public Persona(String nombre, String usuario, String contrasena) {
+        this.nombre = nombre;
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
 
     public String getUsuario() {
         return usuario;
@@ -41,8 +52,10 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "usuario=" + usuario + ", contrasena=" + contrasena + '}';
+        return "Persona{" + "nombre=" + nombre + ", usuario=" + usuario + ", contrasena=" + contrasena + '}';
     }
+
+ 
     
     
 }

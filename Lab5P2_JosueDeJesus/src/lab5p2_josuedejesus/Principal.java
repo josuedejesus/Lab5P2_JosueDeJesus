@@ -31,10 +31,13 @@ public class Principal extends javax.swing.JFrame {
         modelo.addElement("Accion");
         modelo.addElement("Historia");
         
+        menuTabPane.setEnabledAt(2, false);
+        menuTabPane.setEnabledAt(3, false);
+        
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         //administradores.add(new Admin("Josue Francisco De Jesus Moreno", "admin","1234"));
-        persona.add(new Admin("Josue Francisco De Jesus Moreno", "admin","1234"));
+        persona.add(new Admin(1001,"Josue Francisco De Jesus Moreno", "admin","1234"));
     }
 
     /**
@@ -493,7 +496,7 @@ public class Principal extends javax.swing.JFrame {
             }
             else
             {
-                persona.add(new Usuario(fechaN, telefono, correo, nombre, genero, usuario, contrasena));
+                persona.add(new Usuario(fechaN, telefono, correo, genero,nombre, usuario, contrasena));
                 JOptionPane.showMessageDialog(this, "Cuenta creada con exito!");
                 menuTabPane.setSelectedIndex(0);
                 usuarioTxt.setText("");
@@ -520,13 +523,14 @@ public class Principal extends javax.swing.JFrame {
         {
             if (a.getUsuario().contains(usuarioLogTxt.getText()) && a instanceof Admin) {
                 obtenerUsuario = a.getUsuario();
-                //obtenerNombre = a.getNombre();
+                obtenerNombre = a.getNombre();
                 pane = 3;
             }
             else
                 if(a.getUsuario().contains(usuarioLogTxt.getText()) && a instanceof Usuario)
                 {
                     obtenerUsuario = a.getUsuario();
+                    obtenerNombre = a.getNombre();
                     pane = 2;
                 }
         }
@@ -546,43 +550,13 @@ public class Principal extends javax.swing.JFrame {
                 usuarioLogTxt.setText("");
                 contrasenaLogTxt.setText("");
             } else {
+                menuTabPane.setEnabledAt(pane, true);
                 menuTabPane.setSelectedIndex(pane);
                 usuarioLogTxt.setText("");
                 contrasenaLogTxt.setText("");
                 nombreLabel.setText(obtenerNombre);
             }
         }
-        /*
-        //Usuarios
-        for (Usuario t : personas) {
-            if (t instanceof Usuario) {
-                obtenerUsuario = t.getUsuario();
-                obtenerNombre = t.getNombre();
-            }
-        }
-        if (obtenerUsuario.contains(usuarioLogTxt.getText()) == false || usuarioLogTxt.getText().isBlank()) {
-            JOptionPane.showMessageDialog(null, "Usuario incorrecto!");
-            menuTabPane.setSelectedIndex(1);
-            usuarioLogTxt.setText("");
-            contrasenaLogTxt.setText("");
-        } else {
-            for (Persona t : personas) {
-                if (t.getContrasena().contains(contrasenaLogTxt.getText())) {
-                    obtenerContrasena = t.getContrasena();
-                }
-            }
-            if (obtenerContrasena.contains(contrasenaLogTxt.getText()) == false || contrasenaLogTxt.getText().isBlank()) {
-                JOptionPane.showMessageDialog(null, "Contrasena incorrecta!");
-                usuarioLogTxt.setText("");
-                contrasenaLogTxt.setText("");
-            } else {
-                menuTabPane.setSelectedIndex(2);
-                usuarioLogTxt.setText("");
-                contrasenaLogTxt.setText("");
-                nombreLabel.setText(obtenerNombre);
-            }
-        }
-        */
     }//GEN-LAST:event_ingresarButtonMouseClicked
 
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
@@ -591,12 +565,14 @@ public class Principal extends javax.swing.JFrame {
 
     private void salirButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirButtonMouseClicked
         // TODO add your handling code here:
+        menuTabPane.setEnabledAt(2, false);
         menuTabPane.setSelectedIndex(0);
         nombreLabel.setText("");
     }//GEN-LAST:event_salirButtonMouseClicked
 
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
         // TODO add your handling code here:
+        menuTabPane.setEnabledAt(3, false);
         menuTabPane.setSelectedIndex(0);
         nombreLabel.setText("");
     }//GEN-LAST:event_exitButtonMouseClicked
